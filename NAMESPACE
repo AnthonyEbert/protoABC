@@ -3,4 +3,5 @@
 export(abc_control.RABC)
 export(abc_control.rejection)
 export(abc_start)
+export(evidence)
 export(prior_unif)

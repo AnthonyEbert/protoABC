@@ -78,7 +78,12 @@ abc_output.RABC <- function(
   return(as.list(environment(), all=TRUE))
 }
 
-
+evidence_control <- function(
+  n_param = NA,
+  cov_func = ifelse(n_param == 1, stats::var, stats::cov)
+  ){
+  return(as.list(environment(), all = TRUE))
+}
 
 
 
