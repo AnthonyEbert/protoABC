@@ -18,6 +18,8 @@ abc_algorithm.rejection <- function(prior, distance, distance_args, algorithm, c
 
   dist_col <- dim(param)[2] + 1
   output <- matrix(ncol = dist_col, nrow = 0)
+  acceptance = NULL
+  n_store = NULL
 
   while(dim(output)[1] < control$n){
 
@@ -28,6 +30,9 @@ abc_algorithm.rejection <- function(prior, distance, distance_args, algorithm, c
     new_output <- new_output[which(new_output[, dist_col] <= control$epsilon),]
 
     output <- rbind(output, new_output)
+
+    acceptance = c(acceptance, max(0, dim(new_output)[1]/n))
+    n_store = c(n_store, n)
 
     n <- max(1, as.integer((control$n - (dim(output)[1]))/(dim(new_output)[1] / n + control$delta)))
 
@@ -40,11 +45,12 @@ abc_algorithm.rejection <- function(prior, distance, distance_args, algorithm, c
 
   names(output) <- c(names(param), "distance")
 
-  if(output_control$include_dist){
-    return(output)
-  } else {
-    return(output[, - dist_col, drop = FALSE])
+  if(!output_control$include_dist){
+    output = output[, - dist_col, drop = FALSE]
   }
+
+  output = list(output= output, acceptance = acceptance, n_store = n_store)
+
 
 }
 
