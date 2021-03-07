@@ -7,16 +7,24 @@
 #' @description Create list of control parameters for rejection ABC sampler
 #' @export
 #' @param n numeric number of proposals in output
-#' @param epsilon numeric proposals corresponding to distances under this number are kept
+#' @param epsilon numeric proposals corresponding to distances under this number are kept. If you intend to use quantile_keep , set this to NULL.
 #' @param delta numeric control number of new proposals to be resampled if distances are greater than epsilon
+#' @param quantile_keep numeric quantile at which proposals are kept
 abc_control.rejection <- function(
   n = 1000,
   epsilon = 0.05,
-  delta = 1e-3){
+  delta = 1e-3,
+  quantile_keep = NULL){
 
   stopifnot(n > 0 & n %% 1 == 0)
   stopifnot(epsilon >= 0 %% is.numeric(epsilon))
   stopifnot(delta >= 0 %% is.numeric(delta))
+
+  stopifnot(quantile_keep >= 0)
+  stopifnot(quantile_keep <= 1)
+  if(!is.null(quantile_keep)){
+    stopifnot(is.null(epsilon))
+  }
 
   return(as.list(environment(), all=TRUE))
 }

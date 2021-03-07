@@ -1,6 +1,6 @@
 Package: protoABC
 Title: Prototyping ABC Schemes
-Version: 0.4.8
+Version: 0.5.0
 Authors@R: c(
   person("Anthony", "Ebert", email = "anthonyebert+CRAN@gmail.com", role = c("aut", "cre")), 
   person("Christopher", "Drovandi", role = "aut"),
@@ -20,5 +20,5 @@ Copyright: file inst/COPYRIGHTS
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.1
 Suggests: testthat

@@ -4,14 +4,21 @@
 \alias{abc_control.rejection}
 \title{abc_control.rejection}
 \usage{
-abc_control.rejection(n = 1000, epsilon = 0.05, delta = 0.001)
+abc_control.rejection(
+  n = 1000,
+  epsilon = 0.05,
+  delta = 0.001,
+  quantile_keep = NULL
+)
 }
 \arguments{
 \item{n}{numeric number of proposals in output}
 
-\item{epsilon}{numeric proposals corresponding to distances under this number are kept}
+\item{epsilon}{numeric proposals corresponding to distances under this number are kept. If you intend to use quantile_keep , set this to NULL.}
 
 \item{delta}{numeric control number of new proposals to be resampled if distances are greater than epsilon}
+
+\item{quantile_keep}{numeric quantile at which proposals are kept}
 }
 \description{
 Create list of control parameters for rejection ABC sampler

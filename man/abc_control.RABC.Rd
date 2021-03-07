@@ -4,11 +4,20 @@
 \alias{abc_control.RABC}
 \title{abc_control.RABC}
 \usage{
-abc_control.RABC(n = 1000, a = 0.5, c1 = 0.01, R = 10,
-  eps_final = 0, pacc_final = 0.02, d_eps_final = 0,
-  num_drop = ceiling(n * a), num_keep = n - num_drop, n_param = NA,
+abc_control.RABC(
+  n = 1000,
+  a = 0.5,
+  c1 = 0.01,
+  R = 10,
+  eps_final = 0,
+  pacc_final = 0.02,
+  d_eps_final = 0,
+  num_drop = ceiling(n * a),
+  num_keep = n - num_drop,
+  n_param = NA,
   cov_func = ifelse(n_param == 1, stats::var, stats::cov),
-  prior_eval = function(x, y) {     return(1) })
+  prior_eval = function(x, y) {     return(1) }
+)
 }
 \arguments{
 \item{n}{numeric number of proposals in output}

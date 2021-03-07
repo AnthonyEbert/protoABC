@@ -19,6 +19,16 @@ abc_algorithm.rejection <- function(prior, distance, distance_args, algorithm, c
   dist_col <- dim(param)[2] + 1
   output <- matrix(ncol = dist_col, nrow = 0)
 
+  if(is.null(control$epsilon)){
+    # Calculate number of samples to run so as to keep n samples
+    m <- ceiling(n / control$quantile_keep)
+
+    new_output <- rejection_core(m, prior, distance, lfunc, distance_args = distance_args)
+    ord <- order(new_output[, dist_col])
+    output <- new_output[ord, ][1:n, ]
+  } else {
+
+  # I didn't indent this because I didn't want to mess up the git commit.
   while(dim(output)[1] < control$n){
 
     new_output <- rejection_core(n, prior, distance, lfunc, distance_args = distance_args)
@@ -32,6 +42,7 @@ abc_algorithm.rejection <- function(prior, distance, distance_args, algorithm, c
     n <- max(1, as.integer((control$n - (dim(output)[1]))/(dim(new_output)[1] / n + control$delta)))
 
     #print(dim(output)[1])
+  }
   }
 
   output <- as.data.frame(output)

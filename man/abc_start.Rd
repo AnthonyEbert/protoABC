@@ -4,8 +4,15 @@
 \alias{abc_start}
 \title{Start abc inference}
 \usage{
-abc_start(prior, distance, distance_args = NULL, method = "rejection",
-  control = list(), output_control = list(), cl = NULL)
+abc_start(
+  prior,
+  distance,
+  distance_args = NULL,
+  method = "rejection",
+  control = list(),
+  output_control = list(),
+  cl = NULL
+)
 }
 \arguments{
 \item{prior}{function to sample from prior.}
