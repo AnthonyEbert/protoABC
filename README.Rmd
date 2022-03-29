@@ -2,9 +2,11 @@
 output: github_document
 ---
 
+<!-- badges: start -->
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/protoABC)](https://CRAN.R-project.org/package=protoABC)
-[![Build Status](https://travis-ci.org/AnthonyEbert/protoABC.svg)](https://travis-ci.org/AnthonyEbert/protoABC)
+[![R-CMD-check](https://github.com/AnthonyEbert/protoABC/workflows/R-CMD-check/badge.svg)](https://github.com/AnthonyEbert/protoABC/actions)
 [![codecov](https://codecov.io/gh/AnthonyEbert/protoABC/branch/master/graph/badge.svg)](https://codecov.io/gh/AnthonyEbert/protoABC)
+<!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -14,6 +16,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "README-"
 )
+
+set.seed(1)
 ```
 
 # protoABC

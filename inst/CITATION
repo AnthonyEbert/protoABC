@@ -1,0 +1,11 @@
+bibentry(bibtype = "Manual",
+  title        = "The {R} Package {protoABC}",
+  author       = c(person(given = "Anthony",
+                          family = "Ebert",
+                          email = "anthonyebert@gmail.com"),
+                   person(given = "Christopher",
+                          family = "Drovandi")),
+  year         = "2022",
+  url          = "https://github.com/AnthonyEbert/protoABC",
+  note       = "To cite protoABC in publications use:"
+)

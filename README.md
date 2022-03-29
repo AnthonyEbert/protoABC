@@ -1,18 +1,29 @@
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/protoABC)](https://CRAN.R-project.org/package=protoABC) [![Build Status](https://travis-ci.org/AnthonyEbert/protoABC.svg)](https://travis-ci.org/AnthonyEbert/protoABC) [![codecov](https://codecov.io/gh/AnthonyEbert/protoABC/branch/master/graph/badge.svg)](https://codecov.io/gh/AnthonyEbert/protoABC)
+<!-- badges: start -->
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/protoABC)](https://CRAN.R-project.org/package=protoABC)
+[![R-CMD-check](https://github.com/AnthonyEbert/protoABC/workflows/R-CMD-check/badge.svg)](https://github.com/AnthonyEbert/protoABC/actions)
+[![codecov](https://codecov.io/gh/AnthonyEbert/protoABC/branch/master/graph/badge.svg)](https://codecov.io/gh/AnthonyEbert/protoABC)
+<!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-protoABC
-========
 
-The goal of protoABC is to provide a way to perform ABC (approximate Bayesian computation) inference as flexibly as possible. That is with arbitrarily complex simulation algorithms and distance functions.
+# protoABC
 
-The way we implement this is to consider the distance as the output of the simulation and leave the internal details to the user. Parameters in, distance out.
+The goal of protoABC is to provide a way to perform ABC (approximate
+Bayesian computation) inference as flexibly as possible. That is with
+arbitrarily complex simulation algorithms and distance functions.
 
-You need to supply a function which returns a positive number (the distance) with up to two arguments, the first is a vector of your parameters of interest, the second is a list of additional inputs to your function.
+The way we implement this is to consider the distance as the output of
+the simulation and leave the internal details to the user. Parameters
+in, distance out.
 
-Installation
-------------
+You need to supply a function which returns a positive number (the
+distance) with up to two arguments, the first is a vector of your
+parameters of interest, the second is a list of additional inputs to
+your function.
+
+## Installation
 
 You can install protoABC from github with:
 
@@ -21,10 +32,10 @@ You can install protoABC from github with:
 devtools::install_github("AnthonyEbert/protoABC")
 ```
 
-Example
--------
+## Example
 
-The simplest example, a normal distribution. The summary statistic is the sample mean.
+The simplest example, a normal distribution. The summary statistic is
+the sample mean.
 
 ``` r
 library(protoABC)
@@ -54,18 +65,18 @@ abc_post_1 <- abc_start(
 
 summary(abc_post_1)
 #>        mu       
-#>  Min.   :2.865  
-#>  1st Qu.:2.988  
-#>  Median :3.041  
-#>  Mean   :3.037  
-#>  3rd Qu.:3.089  
-#>  Max.   :3.179
+#>  Min.   :2.833  
+#>  1st Qu.:2.940  
+#>  Median :2.992  
+#>  Mean   :2.991  
+#>  3rd Qu.:3.046  
+#>  Max.   :3.154
 ```
 
-The simplest example, a normal distribution. The summary statistics are the sample mean and the standard deviation.
+The simplest example, a normal distribution. The summary statistics are
+the sample mean and the standard deviation.
 
 ``` r
-
 prior <- function(n){
   data.frame(mu = runif(n, 2, 4), sd = rgamma(n, 1, 1))
 }
@@ -98,10 +109,10 @@ abc_post_2 <- abc_start(
 
 summary(abc_post_2)
 #>        mu              sd       
-#>  Min.   :2.887   Min.   :1.361  
-#>  1st Qu.:2.993   1st Qu.:1.428  
-#>  Median :3.026   Median :1.449  
-#>  Mean   :3.027   Mean   :1.451  
-#>  3rd Qu.:3.059   3rd Qu.:1.474  
-#>  Max.   :3.156   Max.   :1.582
+#>  Min.   :2.835   Min.   :1.419  
+#>  1st Qu.:2.946   1st Qu.:1.526  
+#>  Median :2.985   Median :1.552  
+#>  Mean   :2.983   Mean   :1.553  
+#>  3rd Qu.:3.019   3rd Qu.:1.576  
+#>  Max.   :3.128   Max.   :1.661
 ```
